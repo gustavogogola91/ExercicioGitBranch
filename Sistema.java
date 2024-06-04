@@ -12,7 +12,7 @@ public class Sistema {
     public static void verificarOpcao(int opcao) {
         switch (opcao) {
             case 1:
-                // Lógica para cadastrar tarefa
+                cadastrarTarefa();
                 break;
             case 2:
                 // Lógica para buscar tarefa
@@ -34,5 +34,25 @@ public class Sistema {
                 System.out.println("Opção inválida!");
                 break;
         }
+    }
+
+    private static void cadastrarTarefa() {
+        
+        String titulo;
+        String descricao;
+        String dataVencimento;
+        String status;
+
+        System.out.println("\nCadastro de tarefa");
+
+        titulo = Console.lerString("\nDigite o nome da tarefa: ");
+        descricao = Console.lerString("\nDigite a descrição: ");
+        dataVencimento = Console.lerString("\nDigite a data de vencimento da tarefa: ");
+        status = Console.lerString("\nDigite o status: ");
+
+        Tarefa tempTarefa = new Tarefa(titulo, descricao, dataVencimento, status);
+
+        ListaTarefas.addTarefa(tempTarefa);
+        
     }
 }
