@@ -15,7 +15,7 @@ public class Sistema {
                 cadastrarTarefa();
                 break;
             case 2:
-                // Lógica para buscar tarefa
+                buscarTarefa();
                 break;
             case 3:
                 // Lógica para editar tarefa
@@ -45,14 +45,27 @@ public class Sistema {
 
         System.out.println("\nCadastro de tarefa");
 
-        titulo = Console.lerString("\nDigite o nome da tarefa: ");
-        descricao = Console.lerString("\nDigite a descrição: ");
-        dataVencimento = Console.lerString("\nDigite a data de vencimento da tarefa: ");
-        status = Console.lerString("\nDigite o status: ");
+        titulo = Console.lerString("\nDigite o nome da tarefa");
+        descricao = Console.lerString("\nDigite a descrição");
+        dataVencimento = Console.lerString("\nDigite a data de vencimento da tarefa");
+        status = Console.lerString("\nDigite o status");
 
         Tarefa tempTarefa = new Tarefa(titulo, descricao, dataVencimento, status);
 
         ListaTarefas.addTarefa(tempTarefa);
         
+    }
+
+    private static void buscarTarefa() {
+        System.out.println("\nBuscar tarefa");
+        String titulo = Console.lerString("Digite o titulo da tarefa");
+
+        try {
+            Tarefa tempTarefa = ListaTarefas.buscarTarefa(titulo);
+
+            System.out.println(tempTarefa);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
