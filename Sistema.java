@@ -51,6 +51,8 @@ public class Sistema {
         status = Console.lerString("\nDigite o status: ");
 
         Tarefa tempTarefa = new Tarefa(titulo, descricao, dataVencimento, status);
+
+        ListaTarefas.addTarefa(tempTarefa);
         
     }
 }

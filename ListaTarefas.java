@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class ListaTarefas {
+public abstract class ListaTarefas {
     
 
     private static ArrayList<Tarefa> lista = new ArrayList<>();
