@@ -8,4 +8,15 @@ public abstract class ListaTarefas {
     public static void addTarefa(Tarefa tarefa) {
         lista.add(tarefa);
     }
+
+    public static Tarefa buscarTarefa(String titulo) throws Exception {
+
+        for (Tarefa tarefa : lista) {
+            if (tarefa.getTitulo().equals(titulo)) {
+                return tarefa;
+            }
+        }
+
+        throw new Exception("\nTarefa não encontrada.\n");
+    }
 }
