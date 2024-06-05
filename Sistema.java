@@ -21,7 +21,7 @@ public class Sistema {
                 editarTarefaSubMenu();
                 break;
             case 4:
-                // Lógica para excluir tarefa
+                excluirTarefa();
                 break;
             case 5:
                 // Lógica para listar todas as tarefas
@@ -123,4 +123,19 @@ public class Sistema {
         System.out.println("Alterado com sucesso!");
     }
 
+    private static void excluirTarefa() {
+        System.out.println("Excluir tarefa");
+        String titulo = Console.lerString("Digite o titulo da tarefa");
+
+        Tarefa busca;
+
+        try {
+            busca = ListaTarefas.buscarTarefa(titulo);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+
+        ListaTarefas.excluirTarefa(busca);
+    }
 }
