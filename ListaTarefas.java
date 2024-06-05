@@ -19,4 +19,8 @@ public abstract class ListaTarefas {
 
         throw new Exception("\nTarefa não encontrada.\n");
     }
+
+    public static void excluirTarefa(Tarefa tarefa) {
+        lista.remove(tarefa);
+    }
 }
