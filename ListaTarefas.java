@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public abstract class ListaTarefas {
-    
 
     private static ArrayList<Tarefa> lista = new ArrayList<>();
 
@@ -22,5 +21,14 @@ public abstract class ListaTarefas {
 
     public static void excluirTarefa(Tarefa tarefa) {
         lista.remove(tarefa);
+    }
+
+    public static ArrayList<Tarefa> getListaTarefas() throws Exception {
+
+        if (lista.isEmpty()) {
+            throw new Exception("\nNão existem tarefas cadastradas\n");
+        }
+
+        return lista;
     }
 }
