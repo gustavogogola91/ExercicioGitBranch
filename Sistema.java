@@ -1,5 +1,5 @@
 public class Sistema {
-	
+
     public static void exibirMenu() {
         System.out.println("1. Cadastrar Tarefa");
         System.out.println("2. Buscar Tarefa");
@@ -18,7 +18,7 @@ public class Sistema {
                 buscarTarefa();
                 break;
             case 3:
-                // Lógica para editar tarefa
+                editarTarefaSubMenu();
                 break;
             case 4:
                 // Lógica para excluir tarefa
@@ -37,7 +37,7 @@ public class Sistema {
     }
 
     private static void cadastrarTarefa() {
-        
+
         String titulo;
         String descricao;
         String dataVencimento;
@@ -53,7 +53,7 @@ public class Sistema {
         Tarefa tempTarefa = new Tarefa(titulo, descricao, dataVencimento, status);
 
         ListaTarefas.addTarefa(tempTarefa);
-        
+
     }
 
     private static void buscarTarefa() {
@@ -68,4 +68,59 @@ public class Sistema {
             System.out.println(e.getMessage());
         }
     }
+
+    private static void editarTarefaSubMenu() {
+
+        Tarefa busca;
+        System.out.println("Editar tarefa\n");
+
+        String titulo = Console.lerString("Digite o titulo da tarefa");
+
+        try {
+            busca = ListaTarefas.buscarTarefa(titulo);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+
+        int op;
+        do {
+            System.out.println("1. Editar titulo");
+            System.out.println("2. Editar descricao");
+            System.out.println("3. Editar data de vencimento");
+            System.out.println("4. Editar status");
+            System.out.println("0. Cancelar");
+            op = Console.lerInt("Sua opção");
+
+            switch (op) {
+                case 1:
+                    String novoTitulo = Console.lerString("Digite o novo titulo");
+                    busca.setTitulo(novoTitulo);
+                    break;
+                case 2:
+                    String novaDesc = Console.lerString("Digite a nova descrição");
+                    busca.setDescricao(novaDesc);
+                    break;
+                case 3:
+                    String novaData = Console.lerString("Digite a nova data de vencimento");
+                    busca.setDataVencimento(novaData);
+                    break;
+                case 4:
+                    String novoStatus = Console.lerString("Digite o novo status");
+                    busca.setStatus(novoStatus);
+                    break;
+
+                case 0:
+                    System.out.println("Cancelando...");
+                    return;
+
+                default:
+                    System.out.println("\nOpção inválida\n");
+                    break;
+            }
+        } while (op != 0);
+
+        System.out.println("Alterado com sucesso!");
+    }
+
 }
