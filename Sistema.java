@@ -24,7 +24,7 @@ public class Sistema {
                 excluirTarefa();
                 break;
             case 5:
-                // Lógica para listar todas as tarefas
+                listarTarefas();
                 break;
             case 0:
                 System.out.println("Saindo...");
@@ -137,5 +137,17 @@ public class Sistema {
         }
 
         ListaTarefas.excluirTarefa(busca);
+    }
+
+    private static void listarTarefas() {
+
+        try {
+
+            for (Tarefa tempTarefa : ListaTarefas.getListaTarefas()) {
+                System.out.println(tempTarefa);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
